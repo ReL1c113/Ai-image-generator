@@ -7,6 +7,7 @@ Created on Thu Oct 17 12:10:26 2024
 
 import streamlit as st
 from image_generator_execution import img_generator
+import requests
 
 generator=img_generator()
 
@@ -21,4 +22,12 @@ if prompt:
     
 image_url = generator.image_generator(prompt)
 
-st.image(image_url, caption="This is an image from the web.", use_column_width=True)
+response=requests.get(image_url)
+if response.status_code==200":
+    st.image(image_url, caption="Result.", use_column_width=True)
+    st.download_button(
+        label='Download Image',
+        data=response.content,
+        file_name='downloaded_image.jpg',
+        mime='image/jpeg'
+    )
