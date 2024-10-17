@@ -1,1 +1,2 @@
 fal_client==0.4.1
+openpyxl==3.0.10
