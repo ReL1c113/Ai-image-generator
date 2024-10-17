@@ -20,8 +20,7 @@ class img_generator():
             raise Exception("FAL_KEY environment variable is not set!")    
         print("FAL_KEY environment variable is set successfully.")
         
-        
-    def image_generator(self,prompt):
+    def sdxl_image_generator(self,prompt):
         handler = fal_client.submit(
             "fal-ai/fast-sdxl",
             arguments={
@@ -31,8 +30,17 @@ class img_generator():
         result = handler.get()
         url=result['images'][0]['url']
         return url
+    
+    def flux_image_generator(self,prompt):
+        handler = fal_client.submit(
+            "fal-ai/flux/dev",
+            arguments={
+                "prompt": prompt
+            },
+        ) 
+        result = handler.get()
+        url=result['images'][0]['url']
+        return url
         
 
-        
-        
-        
+              
