@@ -23,7 +23,7 @@ if prompt:
 image_url = generator.image_generator(prompt)
 
 response=requests.get(image_url)
-if response.status_code==200":
+if response.status_code==200:
     st.image(image_url, caption="Result.", use_column_width=True)
     st.download_button(
         label='Download Image',
