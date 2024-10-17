@@ -19,7 +19,7 @@ class img_generator():
         if not os.getenv('FAL_KEY'):
             raise Exception("FAL_KEY environment variable is not set!")    
         print("FAL_KEY environment variable is set successfully.")
-        print(self.cred)
+        
         
     def image_generator(self,prompt):
         handler = fal_client.submit(
